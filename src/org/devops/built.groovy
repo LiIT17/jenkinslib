@@ -1,8 +1,8 @@
 package org.devops
 
-def get-type(builttype){
-    def Toolstype = ["maven":"mvn","ant":"ant","gradle":"gradle","nmp":"nmp" ]
+def getType(builttype) {
+    def toolsType = ["maven":"mvn", "ant":"ant", "gradle":"gradle", "npm":"npm"]
     println("当前构建类型为 ${builttype}")
-    tool = Toolstype[${builttype}]
-    sh '$tool $version'
- }
+    def tool = toolsType[builttype]  // 不需要${}语法
+    sh "${tool} ${version}"  // 需要双引号来引用变量
+}
