@@ -1,11 +1,9 @@
 #!/usr/bin/env groovy
 
-/**
- * 获取指定构建工具的版本号
- * 
- * @param toolName 构建工具名称，支持 'maven', 'ant', 'gradle', 'npm' 等
- * @return 返回对应工具的版本号
- */
+def call(String toolName) {
+    return getToolVersion(toolName)
+}
+
 def getToolVersion(String toolName) {
     echo "正在获取 ${toolName} 的版本信息..."
     
@@ -31,11 +29,4 @@ def getToolVersion(String toolName) {
     
     echo "检测到 ${toolName} 版本: ${version}"
     return version
-}
-
-/**
- * 为了兼容Pipeline中的直接调用，提供call方法
- */
-def call(String toolName) {
-    return getToolVersion(toolName)
 }
