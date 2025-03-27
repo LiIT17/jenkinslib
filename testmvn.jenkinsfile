@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    tools {
+        maven 'm2'
+        
+    }
+    stages{
+        stage('Check Maven Version'){
+            steps{
+                script{
+                sh 'mvn --version'
+                }
+            }
+        }
+    }
+    
+    
+}
